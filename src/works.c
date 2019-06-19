@@ -4,14 +4,42 @@ int n;
 int k;
 int A[100000];
 
+int p(int x){
+    int i,j,S;
+    j = 0;
+    S = 0;
+    for(i = 0; i < n; i++){
+        S = S + A[i];
+        if (A[i] > x) return 0;
+        else if(S > x){
+            j = j + 1;
+            S = A[i];
+        }
+    }
+    if(j >= k) return 0;
+    else return 1;
+}
+//全員に仕事量xを与えたら全仕事が終わるか？
 
 int main(){
-  int i, lb, ub;
-  scanf("%d%d", &n, &k);
-  for(i = 0; i < n; i++){
-    scanf("%d", &A[i]);
-  }
-
-
-  return 0;
+    int i, lb, ub;
+    scanf("%d%d", &n, &k);
+    for(i = 0; i < n; i++){
+        scanf("%d", &A[i]);}
+    lb = 0;
+    ub = 10000;
+    while(ub - lb > 1){
+        int m = (lb + ub) / 2;
+        if(p(m) == 1){
+            ub = m;
+        }
+        else {
+            lb = m;
+        }
+    }
+    
+    printf("%d\n",  ub);
+    return 0;
 }
+
+
