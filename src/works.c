@@ -16,8 +16,7 @@ int p(int x){
             S = A[i];
         }
     }
-    if(j >= k) return 0;
-    else return 1;
+    return j < k;
 }
 //全員に仕事量xを与えたら全仕事が終わるか？
 
@@ -27,7 +26,7 @@ int main(){
     for(i = 0; i < n; i++){
         scanf("%d", &A[i]);}
     lb = 0;
-    ub = 10000;
+    ub = 1000000000;
     while(ub - lb > 1){
         int m = (lb + ub) / 2;
         if(p(m) == 1){
